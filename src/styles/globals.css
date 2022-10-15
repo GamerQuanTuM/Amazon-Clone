@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .linkLarge {
+    @apply cursor-pointer hover:border-2 hover:border-separate hover:p-[7px];
+  }
+  .link {
+    @apply cursor-pointer hover:border-2 hover:border-separate hover:p-[1px];
+  }
+  .button{
+    @apply p-2 font-bold text-xs md:text-sm bg-gradient-to-b from-yellow-200 to-yellow-400 font-Roboto border-yellow-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-yellow-500 active:from-yellow-500;
+  }
+  
+}
