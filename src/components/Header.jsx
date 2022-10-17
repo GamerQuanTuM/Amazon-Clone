@@ -1,15 +1,26 @@
 import Image from "next/image";
 import React from "react";
 import { useSession, signIn, signOut } from "next-auth/react";
+import { useRouter } from "next/router";
+import { useSelector } from "react-redux";
+import { selectItems } from "../Redux/Slice/basketSlice";
 
 const Header = () => {
   const { data } = useSession();
+  const router = useRouter();
+
+  const navigate = ()=>{
+    router.push('/');
+  }
+
+  const items = useSelector(selectItems)
 
   return (
     <header>
       <div className="flex items-center bg-amazon_blue p-1 flex-grow py-2">
         <div className="mt-2 flex items-center flex-grow sm:flex-grow-0">
           <Image
+            onClick={navigate}
             className="cursor-pointer"
             objectFit="contain"
             height={40}
@@ -40,11 +51,12 @@ const Header = () => {
           </svg>
         </div>
         <div
-          onClick={signIn}
           className="text-white flex items-center text-xs space-x-6 mx-6 whitespace-nowrap"
         >
           <div onClick={!data ? signIn : signOut} className="linkLarge">
-            <p className="font-Roboto">{data ? `Hello ${data.user.name}` : "Sign In"}</p>
+            <p className="font-Roboto">
+              {data ? `Hello ${data.user.name}` : "Sign In"}
+            </p>
             <p className="font-extrabold font-Roboto md:text-sm">
               Account & Lists
             </p>
@@ -55,9 +67,9 @@ const Header = () => {
             <p className="font-Roboto font-extrabold md:text-sm">& Orders</p>
           </div>
 
-          <div className="relative linkLarge flex items-center">
+          <div onClick={()=>router.push("/checkout")} className="relative linkLarge flex items-center">
             <span className="absolute top-0 -right-1 md:right-10 h-4 w-4 bg-yellow-500 text-center rounded-full  text-black font-bold">
-              0
+              {items.length}
             </span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
