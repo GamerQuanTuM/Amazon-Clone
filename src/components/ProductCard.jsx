@@ -4,7 +4,7 @@ import Star from "./Star";
 import Currency from "react-currency-formatter";
 import { useDispatch, useSelector } from "react-redux";
 import { addToBasket } from "../Redux/Slice/basketSlice";
-import { produceWithPatches } from "immer";
+
 
 const ProductCard = ({ product }) => {
   let [hasPrime] = useState(Math.random() < 0.5);

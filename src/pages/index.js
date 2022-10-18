@@ -9,14 +9,18 @@ export default function Home({ products }) {
     <div className="bg-gray-100">
       <Head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="true"
+        />
         <link
           href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
           rel="stylesheet"
         />
         <title>Amazon Clone</title>
       </Head>
-      <Header />
+      <Header  />
 
       <main className="max-w-screen-2xl mx-auto">
         {/* Banner */}
@@ -31,7 +35,6 @@ export default function Home({ products }) {
 
 export async function getServerSideProps(context) {
   const { data } = await axios.get("https://fakestoreapi.com/products");
-  // console.log(data);
 
   return {
     props: {
